@@ -26,12 +26,15 @@
 - [x] 建立 Discussion 系统
 - [x] 建立 Reference 系统
 - [x] 对 Phase 0 文档做首次一致性审查
+- [x] 强化教学 Note 规范：图示、worked example、idea/motivation/taste、支线、习题与习题课
+- [x] 建立 Note 多轮版本与用户批注 / 助手回应的 TeX 语义规范
+- [x] 将 Mesh Algorithm Library 长期目标写入课程理念与模块设计
 
 ### TODO
 
 - [ ] 建立第一版正式课程模块图
   - Why: 从“运行机制”进入“内容设计”
-  - Input: `syllabus/PHILOSOPHY.md`、历史讨论、后续用户反馈
+  - Input: `syllabus/PHILOSOPHY.md`、`notes/README.md`、历史讨论、后续用户反馈
   - Output: 第一版正式模块依赖图与模块列表
   - Done when: 可以据此选择 Phase 1 教学入口
 
@@ -47,17 +50,23 @@
   - Output: `refs/` 中的首批条目与 Requested 清单
   - Done when: 首模块所需资料明确
 
-- [ ] 决定 TeX / Markdown 的正式分工
-  - Why: 正式 Note 开始前需要稳定文档格式
-  - Input: Note 类型、公式与图示需求
-  - Output: notes 构建规范
-  - Done when: 新 Note 可按统一方式创建
+- [ ] 建立正式 TeX Note template / preamble
+  - Why: 第一篇 Note 开始前，需要把用户批注、助手回应、版本新增、图、worked example、习题与 coding exercise 的环境真正落到可编译模板
+  - Input: `notes/TEX_CONVENTIONS.md`、首篇 Note 的实际需求
+  - Output: 可复用 TeX 模板与编译说明
+  - Done when: 可以直接创建并编译第一篇正式 Note
 
 - [ ] 设计首个 Module 的验收方式
   - Why: 掌握标准不能只依赖“读完了”
   - Input: 首模块内容
-  - Output: 推导、解释、实验或实现层面的 exit criteria
+  - Output: 解释、推导、手算、实验、失效诊断与实现层面的 exit criteria
   - Done when: 可以客观判断阶段完成
+
+- [ ] 规划 Mesh Algorithm Library 的最小组织方式
+  - Why: 编码习题应逐步沉淀为长期资产，但不应过早复杂架构
+  - Input: 前若干 Module 的实际算法需求、已有样条库与拓扑库方向
+  - Output: 初版代码组织、测试原则、与课程 Note 的链接方式
+  - Done when: 首个可复用算法实现有明确落点
 
 ## Task handoff template
 
