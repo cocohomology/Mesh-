@@ -6,6 +6,13 @@
 
 这里不追求一开始建立庞大的 bibliography，而是服务于当前课程问题。
 
+当前长期索引：
+
+- `BOOKLIST.md`：书籍、讲义、经典论文与 frontier references 的长期地图；
+- `LIBRARIES.md`：成熟 mesh / geometry / meshing / learning library 的源码阅读与对比索引。
+
+这两个文件只是地图。**每篇正式 Note 仍必须自己列出真正使用的 references、推荐阅读部分与 Requested references。**
+
 ## Reference categories
 
 建议按用途登记：
@@ -14,6 +21,7 @@
 - **Secondary**：用于补充证明、不同视角或背景；
 - **Engineering**：实现、库、源码、工程经验；
 - **Historical**：历史来源与概念演化；
+- **Frontier**：快速发展、需要定期重新评估的方向；
 - **Optional**：有价值但暂不阻塞课程；
 - **Requested**：助手需要但当前仓库中没有，希望用户协助寻找或上传。
 
@@ -23,7 +31,7 @@
 ### [ID] Title
 - Authors:
 - Type: book / paper / notes / code / website
-- Role: Primary / Secondary / Engineering / Historical / Optional / Requested
+- Role: Primary / Secondary / Engineering / Historical / Frontier / Optional / Requested
 - Relevant module:
 - Why needed:
 - What to read:
@@ -42,13 +50,36 @@
 - 为什么这份资料适合回答它？
 - 需要精读哪一部分？
 - 哪些章节可以暂时跳过？
-- 阅读后要产出什么：Note、证明、实验、算法实现还是课程结构调整？
+- 阅读后要产出什么：Note、证明、实验、算法实现、library study 还是课程结构调整？
+
+## Note-level requirement
+
+每篇正式 Note 的末尾至少区分：
+
+- **Used references**：本 Note 实际依赖；
+- **Recommended reading**：建议配合阅读；
+- **Optional / perspective**：用于扩展视野；
+- **Requested references**：需要用户协助上传/寻找的完整资料。
+
+若只需要某本书的一章，应写清章节，而不是只写书名。
 
 ## User-assisted acquisition
 
 若助手发现某篇论文、书籍章节或资料很关键，但无法直接获得完整内容，应明确向用户登记请求，而不是凭二手描述假装已读。
 
 建议将此类需求写为 `Requested`，包含准确标题、作者、用途和优先级。用户可随后上传资料，再由助手整合。
+
+## Frontier freshness rule
+
+3D/4D representation、geometric learning、differentiable geometry 等方向变化较快。
+
+进入正式 Frontier Note 前必须重新检查：
+
+- 当前代表性论文/实现；
+- 原先列出的技术是否仍具有代表性；
+- 该主题应保持支线、升级主线还是暂缓。
+
+不要把建立大纲时的“最新技术”永久固化。
 
 ## Evidence discipline
 
