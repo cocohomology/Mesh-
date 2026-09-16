@@ -29,44 +29,46 @@
 - [x] 强化教学 Note 规范：图示、worked example、idea/motivation/taste、支线、习题与习题课
 - [x] 建立 Note 多轮版本与用户批注 / 助手回应的 TeX 语义规范
 - [x] 将 Mesh Algorithm Library 长期目标写入课程理念与模块设计
+- [x] 建立第一版正式课程模块图 `syllabus/MODULE_MAP.md`
+- [x] 建立贯穿课程的工程学习与 Mesh Algorithm Library 路线 `syllabus/ENGINEERING_TRACK.md`
+- [x] 建立初版书籍/讲义/前沿资料地图 `refs/BOOKLIST.md`
+- [x] 建立成熟 mesh / geometry library 学习索引 `refs/LIBRARIES.md`
+- [x] 明确 core spine + engineering track + frontier tracks 的课程结构
 
-### TODO
+### TODO — immediate
 
-- [ ] 建立第一版正式课程模块图
-  - Why: 从“运行机制”进入“内容设计”
-  - Input: `syllabus/PHILOSOPHY.md`、`notes/README.md`、历史讨论、后续用户反馈
-  - Output: 第一版正式模块依赖图与模块列表
-  - Done when: 可以据此选择 Phase 1 教学入口
-
-- [ ] 决定 Phase 1 的正式教学入口
-  - Why: 避免未经设计直接写第一篇 Note
-  - Input: 第一版正式模块图
-  - Output: 首个 active module 与第一篇 Note 计划
-  - Done when: `PROGRESS.md` 明确记录下一教学动作
-
-- [ ] 确定第一批核心参考资料
-  - Why: 为首批模块提供可靠教材、论文与工程实现来源
-  - Input: 正式模块图
-  - Output: `refs/` 中的首批条目与 Requested 清单
-  - Done when: 首模块所需资料明确
+- [ ] 设计 M00 正式 Module 文件
+  - Why: v0.1 推荐从“mesh 究竟是什么”开始，需要把高层地图变成可教学单元
+  - Input: `syllabus/MODULE_MAP.md`、`syllabus/MODULE_TEMPLATE.md`、`refs/LIBRARIES.md`
+  - Output: M00 的 big picture、Note 列表、图示/手算计划、库阅读、习题、coding 与 exit criteria
+  - Done when: 可以直接开始第一篇 Note
 
 - [ ] 建立正式 TeX Note template / preamble
   - Why: 第一篇 Note 开始前，需要把用户批注、助手回应、版本新增、图、worked example、习题与 coding exercise 的环境真正落到可编译模板
-  - Input: `notes/TEX_CONVENTIONS.md`、首篇 Note 的实际需求
+  - Input: `notes/TEX_CONVENTIONS.md`、M00 实际需求
   - Output: 可复用 TeX 模板与编译说明
-  - Done when: 可以直接创建并编译第一篇正式 Note
+  - Done when: 可以直接创建并编译 `M00-N01`
 
-- [ ] 设计首个 Module 的验收方式
-  - Why: 掌握标准不能只依赖“读完了”
-  - Input: 首模块内容
-  - Output: 解释、推导、手算、实验、失效诊断与实现层面的 exit criteria
-  - Done when: 可以客观判断阶段完成
+- [ ] 为 M00 建立精确 reference plan
+  - Why: 长期书单已经建立，但第一篇 Note 必须告诉用户具体看什么/需要什么资料
+  - Input: `refs/BOOKLIST.md`、`refs/LIBRARIES.md`
+  - Output: M00 used/recommended/optional/requested refs
+  - Done when: 用户不需要猜测要准备哪些资料
 
-- [ ] 规划 Mesh Algorithm Library 的最小组织方式
-  - Why: 编码习题应逐步沉淀为长期资产，但不应过早复杂架构
-  - Input: 前若干 Module 的实际算法需求、已有样条库与拓扑库方向
-  - Output: 初版代码组织、测试原则、与课程 Note 的链接方式
-  - Done when: 首个可复用算法实现有明确落点
+- [ ] 设计 M00 的首次 library study
+  - Why: 数据结构问题必须结合真实成熟库，而不是只做抽象比较
+  - Candidate: OpenMesh / PMP / geometry-central / CGAL Surface_mesh / libigl
+  - Output: 一张设计维度对比表 + 首轮源码阅读目标
+  - Done when: M00-N01/N02 能引用真实库设计
+
+### TODO — near term
+
+- [ ] 完成 `M00-N01 — One mesh, many meanings`
+- [ ] 建立首个习题 / coding session：手工小网格、incidence、halfedge traversal、validity tests
+- [ ] 根据用户对 M00 首批 Note 的反馈重新审查 `MODULE_MAP.md`
+- [ ] 规划 Mesh Algorithm Library 的最小实际仓库/目录结构
+- [ ] M03 开始前补齐 Triangle / robust predicates 的精确源码与论文参考
+- [ ] Frontier track 开始前重新检索当时代表技术，不直接沿用当前技术快照
 
 ## Task handoff template
 
