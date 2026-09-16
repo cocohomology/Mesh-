@@ -43,6 +43,8 @@
 - 哪些结构被保持，哪些被牺牲？
 - 算法的稳定性问题来自数值、组合、几何还是建模层？
 
+工程能力不是理论课程结束后的附加章节，而是贯穿课程的第二条主线。
+
 ## 4. Algorithm understanding standard
 
 对于经典算法，不满足于“描述流程 + 复杂度 + 实现”。
@@ -88,23 +90,64 @@
 
 这意味着课程中的数据结构、接口、测试、鲁棒性与数学抽象需要保持长期视角，但不为了未来统一而过早做复杂架构。
 
+工程推进规则见 `syllabus/ENGINEERING_TRACK.md`。
+
 ## 7. Relationship to traditional mesh-processing teaching
 
 传统 mesh-processing 教材仍然有重要价值：它们提供经典问题、成熟算法与工程坐标系。
 
 但本课程不会简单沿着“平滑、参数化、简化、重建……”的目录前进。传统目录更像应用索引；课程主线由数学结构与离散化思想决定。
 
-## 8. Course tone
+## 8. Classic foundations and fast-moving frontiers
+
+课程必须同时防止两种偏航：
+
+- 只学经典内容，最终形成一套漂亮但封闭于旧问题的理论体系；
+- 追逐所有新论文，把课程变成热点新闻流，失去稳定的知识骨架。
+
+因此采用 `core spine + frontier tracks`：
+
+- **Core spine**：经长期检验、结构性强、会反复支撑后续问题的数学与经典算法；
+- **Frontier tracks**：快速发展的表示、学习和计算方法，例如 geometric deep learning、differentiable geometry、implicit/neural fields、3D/4D Gaussian Splatting、Physical AI 等。
+
+Frontier topic 的选择标准不是“新不新”，而是：
+
+1. 是否暴露传统 mesh representation 的真实边界；
+2. 是否复用了或改写了课程中的核心数学结构；
+3. 是否形成了新的工程范式；
+4. 是否对未来职业与研究方向有长期价值；
+5. 是否已经成熟到可以教学，而不是只能列论文。
+
+Frontier 内容需要在正式进入 Note 前重新检索最新代表工作，避免把大纲建立时的技术快照固化。
+
+## 9. Mature libraries are part of the curriculum
+
+成熟网格/几何库不仅用于“调接口”，本身也是工程思想的浓缩。
+
+课程会选择性阅读 CGAL、libigl、geometry-central、PMP、OpenMesh、Gmsh、TetGen、Open3D、PyTorch3D 等库，重点理解：
+
+- 它们把 mesh 定义成什么对象；
+- topology / geometry / property 如何组织；
+- genericity、mutation、cache、batch/GPU 等设计如何取舍；
+- robustness 来自 exact predicate、filtered computation、repair、precondition 还是 tolerance；
+- 哪些设计适合工业，哪些适合论文原型，哪些适合教学。
+
+不同库之间不存在必须选出的“冠军”。它们是不同工程约束下的不同答案。
+
+具体索引见 `refs/LIBRARIES.md`。
+
+## 10. Course tone
 
 - 深，但不追求形式主义堆砌；
 - 数学严谨，但始终追问工程意义；
 - 工程具体，但不满足于经验参数；
 - 允许支线和研究性问题；
+- 允许新技术进入，但拒绝热点驱动课程；
 - 允许推翻初版大纲；
 - 允许长时间停留在一个真正重要的问题上；
 - 允许一篇 Note 经历多轮“用户思考 -> 助手回应 -> 结构升级”的版本演化。
 
-## 9. What success looks like
+## 11. What success looks like
 
 课程成功的标志不是“学完多少章节”，而是逐渐形成一种稳定的观察方式：
 
@@ -116,4 +159,4 @@
 - 有价值的习题与习题课记录；
 - 可复用的算法实现与测试；
 - 能暴露开放问题的 Discussion；
-- 一张不断演化的数学—算法—工程知识地图。
+- 一张不断演化的数学—算法—工程—前沿知识地图。
