@@ -34,38 +34,47 @@
 - [x] 建立初版书籍/讲义/前沿资料地图 `refs/BOOKLIST.md`
 - [x] 建立成熟 mesh / geometry library 学习索引 `refs/LIBRARIES.md`
 - [x] 明确 core spine + engineering track + frontier tracks 的课程结构
+- [x] 完成第一篇正式 Note `notes/M00/M00-N01-one-mesh-many-meanings.tex` v0.1
+- [x] 建立 M00 精确 reference plan `refs/M00.md`
 
-### TODO — immediate
+### DOING — immediate
+
+- [ ] **M00-N01 第一轮用户阅读与批注**
+  - Why: 大纲与 Note 必须接受真实学习反馈，而不是助手单方面继续铺课
+  - Input: `notes/M00/M00-N01-one-mesh-many-meanings.tex` v0.1
+  - User action: 不删除原文，使用 `studentthought` 环境加入思考、质疑、计算、工程联想并提交 Git
+  - Assistant action after commit: 读取全部批注，用 `assistantresponse` 回应，必要时用 `versionaddition` 补正式内容，升级版本号与 revision history
+  - Done when: 第一轮反馈被吸收并形成下一版本
+
+### TODO — after first review
+
+- [ ] 根据 M00-N01 的真实反馈回看 `syllabus/MODULE_MAP.md`
+  - Why: 第一篇 Note 是课程大纲的第一次实际压力测试
+  - Output: 保持、微调或重构模块顺序/粒度的明确判断
+
+- [ ] 决定 M00-N02 的方向
+  - Candidate A: deeper incidence / boundary / orientation / halfedge implementation
+  - Candidate B: comparative library lab — libigl vs geometry-central vs OpenMesh/CGAL
+  - Input: 用户对 v0.1 的批注
+  - Done when: `PROGRESS.md` 明确下一篇 Note 或 lab
+
+- [ ] 决定是否把 M00-N01 的 self-contained TeX preamble 抽成公共 template
+  - Why: 第一篇 Note 已经实际验证所需环境；避免在没有实践前冻结模板
+  - Input: v0.1 编译与阅读反馈
+  - Output: reusable template if worthwhile
 
 - [ ] 设计 M00 正式 Module 文件
-  - Why: v0.1 推荐从“mesh 究竟是什么”开始，需要把高层地图变成可教学单元
-  - Input: `syllabus/MODULE_MAP.md`、`syllabus/MODULE_TEMPLATE.md`、`refs/LIBRARIES.md`
-  - Output: M00 的 big picture、Note 列表、图示/手算计划、库阅读、习题、coding 与 exit criteria
-  - Done when: 可以直接开始第一篇 Note
+  - Why: 第一篇 Note 已经反向提供更真实的模块粒度信息
+  - Input: `M00-N01` 首轮反馈、`MODULE_MAP.md`、`MODULE_TEMPLATE.md`
+  - Output: M00 big picture、Note 列表、库阅读、习题、coding 与 exit criteria
 
-- [ ] 建立正式 TeX Note template / preamble
-  - Why: 第一篇 Note 开始前，需要把用户批注、助手回应、版本新增、图、worked example、习题与 coding exercise 的环境真正落到可编译模板
-  - Input: `notes/TEX_CONVENTIONS.md`、M00 实际需求
-  - Output: 可复用 TeX 模板与编译说明
-  - Done when: 可以直接创建并编译 `M00-N01`
-
-- [ ] 为 M00 建立精确 reference plan
-  - Why: 长期书单已经建立，但第一篇 Note 必须告诉用户具体看什么/需要什么资料
-  - Input: `refs/BOOKLIST.md`、`refs/LIBRARIES.md`
-  - Output: M00 used/recommended/optional/requested refs
-  - Done when: 用户不需要猜测要准备哪些资料
-
-- [ ] 设计 M00 的首次 library study
-  - Why: 数据结构问题必须结合真实成熟库，而不是只做抽象比较
-  - Candidate: OpenMesh / PMP / geometry-central / CGAL Surface_mesh / libigl
-  - Output: 一张设计维度对比表 + 首轮源码阅读目标
-  - Done when: M00-N01/N02 能引用真实库设计
+- [ ] 规划 MeshAudit 的实现落点
+  - Why: v0.1 已把它作为第一个 library candidate；需决定是先做课程练习还是直接形成可复用代码
+  - Input: 用户对编码任务的反馈、未来 Mesh Algorithm Library 组织方式
 
 ### TODO — near term
 
-- [ ] 完成 `M00-N01 — One mesh, many meanings`
-- [ ] 建立首个习题 / coding session：手工小网格、incidence、halfedge traversal、validity tests
-- [ ] 根据用户对 M00 首批 Note 的反馈重新审查 `MODULE_MAP.md`
+- [ ] 建立首个习题 / coding session（若 M00-N01 反馈表明需要）
 - [ ] 规划 Mesh Algorithm Library 的最小实际仓库/目录结构
 - [ ] M03 开始前补齐 Triangle / robust predicates 的精确源码与论文参考
 - [ ] Frontier track 开始前重新检索当时代表技术，不直接沿用当前技术快照
