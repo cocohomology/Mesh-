@@ -21,6 +21,8 @@
 \newcommand{\noteversion}{v0.1}
 \newcommand{\notestatus}{teaching}
 \newcommand{\notelastupdate}{2026-09-16}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\cgalSurfaceMesh}{\texttt{Surface\_mesh}}
 
 \newtcolorbox{keyidea}[1][]{breakable,colback=blue!3,colframe=blue!45!black,title={核心观点 #1},fonttitle=\bfseries}
 \newtcolorbox{workedexample}[1][]{breakable,colback=green!3,colframe=green!45!black,title={手算例子 #1},fonttitle=\bfseries}
@@ -392,7 +394,7 @@ F\in\mathbb N^{m\times 3}.
 
 $V$ 第 $i$ 行是顶点坐标，$F$ 第 $j$ 行是第 $j$ 个三角形的三个顶点索引。
 
-libigl 明确采用这一风格，并强调它与 Eigen 矩阵计算自然结合。官方教程中，三角 mesh 就以 `MatrixXd V` 和 `MatrixXi F` 表示。
+libigl 明确采用这一风格，并强调它与 Eigen 矩阵计算自然结合。官方教程中，三角 mesh 就以 \code{MatrixXd V} 和 \code{MatrixXi F} 表示。
 
 它的优点非常直接：
 
@@ -442,10 +444,10 @@ halfedge 的核心动作非常简单：把每条无向边拆成带方向的半�
 \end{tikzpicture}
 \end{center}
 
-`next` 让我们沿一个面循环，`twin` 让我们跨过一条边。不同库会选择略有不同的 convention：halfedge 指向 head 还是从 tail 出发，边界是否使用 exterior halfedge，删除后如何处理 index 等，但思想相同：\textbf{把 incidence relation 编码成局部常数时间导航。}
+\code{next} 让我们沿一个面循环，\code{twin} 让我们跨过一条边。不同库会选择略有不同的 convention：halfedge 指向 head 还是从 tail 出发，边界是否使用 exterior halfedge，删除后如何处理 index 等，但思想相同：\textbf{把 incidence relation 编码成局部常数时间导航。}
 
 \begin{sidenote}[：halfedge 甚至可以被看成 permutation]
-geometry-central 的实现文档给出了一个很漂亮的观点：在其 manifold halfedge 表示里，可以通过索引安排让 `twin` 近乎隐式，而用一个 permutation array 编码 `next`；face 可以看作 `next` 的轨道，edge 可以看作 `twin` 的轨道。
+geometry-central 的实现文档给出了一个很漂亮的观点：在其 manifold halfedge 表示里，可以通过索引安排让 \code{twin} 近乎隐式，而用一个 permutation array 编码 \code{next}；face 可以看作 \code{next} 的轨道，edge 可以看作 \code{twin} 的轨道。
 
 这正是“代数结构自然融入工程”的一个微型例子：一个看似指针繁多的数据结构，底层其实可以被压缩成若干置换与索引数组。
 \end{sidenote}
@@ -457,14 +459,14 @@ geometry-central 的实现文档给出了一个很漂亮的观点：在其 manif
 边界 edge 只有一侧有真实面。库可以有不同策略：
 
 \begin{itemize}
-  \item `twin` 指向一个特殊 invalid/null face；
+  \item \code{twin} 指向一个特殊 invalid/null face；
   \item 显式创建 exterior halfedge，并把整条 boundary loop 当作某种虚拟 face；
   \item 在 general surface mesh 中放宽“恰好一个 twin”的假设，改成 sibling orbit。
 \end{itemize}
 
 这些不是数学上谁对谁错，而是不同 representation contract。
 
-例如 geometry-central 的 `ManifoldSurfaceMesh` 使用 exterior halfedges 来让 boundary traversal 保持统一，而其更一般的 `SurfaceMesh` 可以用 sibling 关系处理一条 edge 上多个 halfedges 的情况。
+例如 geometry-central 的 \code{ManifoldSurfaceMesh} 使用 exterior halfedges 来让 boundary traversal 保持统一，而其更一般的 \code{SurfaceMesh} 可以用 sibling 关系处理一条 edge 上多个 halfedges 的情况。
 
 \subsection{四个成熟库，四种 taste}
 
@@ -482,7 +484,7 @@ OpenMesh & halfedge + typed handles + iterators/circulators + properties & 动�
 \addlinespace
 geometry-central & index-based surface mesh + 独立 geometry hierarchy & DDG、intrinsic/extrinsic geometry、动态 mesh & connectivity 与 geometry 明确分层；dense buffer；general 与 manifold mesh 分开\\
 \addlinespace
-CGAL `Surface_mesh` & index-based halfedge + runtime property maps + graph concepts & 作为 CGAL 各类 polygon mesh algorithm 的通用载体 & descriptor/type safety；BGL 概念兼容；删除/garbage collection；运行时 property\\
+CGAL \cgalSurfaceMesh & index-based halfedge + runtime property maps + graph concepts & 作为 CGAL 各类 polygon mesh algorithm 的通用载体 & descriptor/type safety；BGL 概念兼容；删除/garbage collection；运行时 property\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -548,7 +550,7 @@ CGAL `Surface_mesh` & index-based halfedge + runtime property maps + graph conce
 
 第一篇 Note 就应该产生一点可复用代码，但不急着造完整 halfedge kernel。
 
-我建议 Mesh Algorithm Library 的第一个真实组件不是 `HalfedgeMesh`，而是一个针对 indexed triangle mesh 的 \textbf{MeshAudit / validation layer}。
+我建议 Mesh Algorithm Library 的第一个真实组件不是 \code{HalfedgeMesh}，而是一个针对 indexed triangle mesh 的 \textbf{MeshAudit / validation layer}。
 
 理由很简单：如果我们还没有清楚区分合法性层次，就过早设计复杂数据结构，很容易把若干假设偷偷写死。
 
@@ -582,7 +584,7 @@ V\in\mathbb R^{n\times 3},\qquad F\in\mathbb Z^{m\times 3}.
 [REPRESENTATION] face 3 references vertex 1024 >= nVertices
 \end{lstlisting}
 
-这比单一 `isValid(mesh)` 更有教学价值，也更有工程价值。
+这比单一 \code{isValid(mesh)} 更有教学价值，也更有工程价值。
 \end{codingexercise}
 
 \section{为什么成熟库值得读：不是为了复制，而是为了观察取舍}
@@ -698,7 +700,7 @@ K_2=K_1\cup\{\{0,1,2\}\}.
 \end{exercise}
 
 \begin{exercise}[5：读库，不写代码]
-任选 libigl、OpenMesh、geometry-central、CGAL `Surface_mesh` 中两个，回答：
+任选 libigl、OpenMesh、geometry-central、CGAL \cgalSurfaceMesh 中两个，回答：
 
 \begin{enumerate}
   \item mesh element 的 identity 如何表示？
@@ -756,7 +758,7 @@ M00 后续 Note 暂定继续处理两件事：
   \item libigl tutorial: \url{https://libigl.github.io/tutorial/}
   \item geometry-central surface mesh basics/internals: \url{https://geometry-central.net/surface/surface_mesh/basics/} ，\url{https://geometry-central.net/surface/surface_mesh/internals/}
   \item geometry-central geometry hierarchy: \url{https://geometry-central.net/surface/geometry/geometry/}
-  \item CGAL `Surface_mesh` manual: \url{https://doc.cgal.org/latest/Surface_mesh/index.html}
+  \item CGAL \cgalSurfaceMesh{} manual: \url{https://doc.cgal.org/latest/Surface_mesh/index.html}
   \item OpenMesh documentation: \url{https://www.graphics.rwth-aachen.de/media/openmesh_static/Documentations/OpenMesh-8.1-Documentation/index.html}
 \end{itemize}
 
