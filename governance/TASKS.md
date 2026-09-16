@@ -19,22 +19,45 @@
 - [x] 建立跨聊天交接协议
 - [x] 建立当前进度入口
 - [x] 建立关键决策日志
-
-### DOING
-
-- [ ] 建立反馈闭环机制
-- [ ] 建立课程理念与大纲系统
-- [ ] 建立 Note 系统
-- [ ] 建立 Discussion 系统
-- [ ] 建立 Reference 系统
+- [x] 建立反馈闭环机制
+- [x] 建立课程理念与动态大纲系统
+- [x] 建立 Module 模板
+- [x] 建立 Note 系统
+- [x] 建立 Discussion 系统
+- [x] 建立 Reference 系统
+- [x] 对 Phase 0 文档做首次一致性审查
 
 ### TODO
 
-- [ ] 对 Phase 0 文档做一次一致性审查
+- [ ] 建立第一版正式课程模块图
+  - Why: 从“运行机制”进入“内容设计”
+  - Input: `syllabus/PHILOSOPHY.md`、历史讨论、后续用户反馈
+  - Output: 第一版正式模块依赖图与模块列表
+  - Done when: 可以据此选择 Phase 1 教学入口
+
 - [ ] 决定 Phase 1 的正式教学入口
+  - Why: 避免未经设计直接写第一篇 Note
+  - Input: 第一版正式模块图
+  - Output: 首个 active module 与第一篇 Note 计划
+  - Done when: `PROGRESS.md` 明确记录下一教学动作
+
 - [ ] 确定第一批核心参考资料
+  - Why: 为首批模块提供可靠教材、论文与工程实现来源
+  - Input: 正式模块图
+  - Output: `refs/` 中的首批条目与 Requested 清单
+  - Done when: 首模块所需资料明确
+
 - [ ] 决定 TeX / Markdown 的正式分工
+  - Why: 正式 Note 开始前需要稳定文档格式
+  - Input: Note 类型、公式与图示需求
+  - Output: notes 构建规范
+  - Done when: 新 Note 可按统一方式创建
+
 - [ ] 设计首个 Module 的验收方式
+  - Why: 掌握标准不能只依赖“读完了”
+  - Input: 首模块内容
+  - Output: 推导、解释、实验或实现层面的 exit criteria
+  - Done when: 可以客观判断阶段完成
 
 ## Task handoff template
 
