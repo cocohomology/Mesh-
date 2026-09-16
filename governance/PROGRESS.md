@@ -6,17 +6,50 @@
 
 **Phase 0 complete — infrastructure established**
 
-**Phase 1 design ready — v0.1 formal curriculum map established; first teaching module not yet written**
+**Phase 1 active — M00 teaching has started**
+
+第一篇正式教学 Note 已完成 v0.1：
+
+- `notes/M00/M00-N01-one-mesh-many-meanings.tex`
+- Title: `One Mesh, Many Meanings：一个网格究竟是什么？`
+- Status: teaching / awaiting first user reading and annotation
 
 ## Current focus
 
-课程已经从“如何运行”进入“具体学什么、如何把理论与工程交织”的阶段。
+当前不要机械继续写 M00-N02。
 
-第一版正式模块图、工程线、书单和成熟库索引已经建立。下一步不是继续无限扩充大纲，而是把 `M00 — What is a mesh?` 设计成第一个可执行 Module，并建立正式 TeX Note template，然后开始 `M00-N01`。
+下一步应由用户完整阅读 `M00-N01 v0.1`，使用 `studentthought` 环境在原 TeX 中加入思考、疑问、反例、工程联想与批注，然后提交更新。助手读取批注后：
 
-## What is now settled
+1. 在 Note 中用 `assistantresponse` 回应；
+2. 必要时用 `versionaddition` 增加正式教学内容；
+3. 升级 Note 版本号并维护 revision history；
+4. 根据反馈决定 M00-N02 的方向；
+5. 重新检查 MODULE_MAP 是否需要调整。
 
-### Course worldview
+## What M00-N01 establishes
+
+第一篇 Note 不从 halfedge API 或算法清单出发，而先建立以下核心对象层次：
+
+`graph -> complex -> PL geometry -> analysis -> software representation`
+
+并强调反向的“forget structure”视角：算法真正依赖哪一层结构，是理解其边界与失效的重要工具。
+
+Note 当前包含：
+
+- 两三角形方形贯穿例子；
+- graph 与 filled complex 的区别；
+- abstract simplicial complex 与 geometric realization；
+- intrinsic metric 的入口；
+- orientation 与 boundary operator 的手算抵消；
+- star / link 与局部 manifoldness 预览；
+- indexed face set (`V,F`) 与 halfedge 的设计取舍；
+- libigl / OpenMesh / geometry-central / CGAL `Surface_mesh` 的对象模型对照；
+- 按 representation / topology / geometry / numerical layers 区分坏网格；
+- 第一个 library candidate：`MeshAudit` validator；
+- 高价值习题与编码任务；
+- Note 内重复列出的 requested references。
+
+## Course worldview — settled
 
 - 本课程不是传统“网格算法大全”。
 - 课程追求数学结构与网格算法之间的强连接。
@@ -26,7 +59,7 @@
 - 核心算法需要分析：对象、假设、数学结构、核心定理、失效机制与推广。
 - 理想理解链条为：`Algorithm <-> Theorem <-> Structure <-> Assumption <-> Failure <-> Generalization`。
 
-### Curriculum architecture
+## Curriculum architecture
 
 课程采用：
 
@@ -34,65 +67,22 @@
 2. **Engineering track**：数据结构、成熟库、实现、测试、性能与鲁棒性，贯穿所有核心模块；
 3. **Frontier tracks**：快速发展的 geometric learning、differentiable geometry、implicit/neural representation、3D/4D Gaussian Splatting、Physical AI 等方向。
 
-Frontier topic 不因为新而自动进入主线；开始正式教学前必须重新检查当时代表技术与成熟度。
+正式地图见 `syllabus/MODULE_MAP.md`；工程路线见 `syllabus/ENGINEERING_TRACK.md`。
 
-### v0.1 module map
+## References
 
-正式地图见 `syllabus/MODULE_MAP.md`。
+长期资料地图：`refs/BOOKLIST.md`
 
-当前模块包括：
+成熟库索引：`refs/LIBRARIES.md`
 
-- M00 mesh object / representation / data structures；
-- M01 combinatorial topology；
-- M02 piecewise-linear metric geometry；
-- M03 Voronoi / Delaunay / convexity / robust predicates；
-- M04 discrete differential operators / FEM / DEC；
-- M05 variational geometry processing；
-- M06 geodesics / diffusion / spectral geometry；
-- M07 parameterization / discrete conformal geometry；
-- M08 smoothing / fairing / remeshing；
-- M09 simplification / approximation / LOD；
-- M10 subdivision / multiresolution；
-- M11 intersections / repair / Boolean operations；
-- M12 reconstruction / point & implicit geometry；
-- M13 surface / volume mesh generation；
-- M14 deformation / shape analysis / correspondence；
-- F01 geometric deep learning / differentiable geometry；
-- F02 implicit/neural scene representation, NeRF, 3DGS, 4DGS；
-- F03 simulation / physical geometry / Physical AI bridge。
+M00 精确资料计划：`refs/M00.md`
 
-v0.1 推荐从 M00 开始；M03 Delaunay/Voronoi 将作为早期第一个 grand case study。
+M00-N01 末尾也显式重复了 Requested References。当前优先希望用户补充：
 
-### Engineering line
-
-`syllabus/ENGINEERING_TRACK.md` 已定义：
-
-- 外部库作为 Reference / Oracle / Dependency 三种角色；
-- invariant / pathological / differential / convergence / performance tests；
-- coding exercise 分为 hand implementation / reference implementation / library candidate / external integration；
-- Mesh Algorithm Library 的分阶段积累路线；
-- 不为“自研”重写一切，也不为未来三库统一而过早抽象。
-
-### Mature libraries
-
-`refs/LIBRARIES.md` 已建立首批索引，包括 CGAL、libigl、geometry-central、PMP、OpenMesh、Gmsh、TetGen、Triangle、Open3D、PyTorch3D 等。
-
-这些库本身也是课程材料：需要研究对象模型、connectivity、mutation、property、robustness、genericity、solver/kernel、性能模型和适用边界。
-
-### References
-
-`refs/BOOKLIST.md` 已建立长期参考地图。每篇正式 Note 仍必须单独列出 used / recommended / optional / requested references 和具体阅读章节。
-
-### Note system
-
-- Note 必须是教学式讲义，而不是聊天摘要或论文压缩版。
-- 认知顺序优先强调：`Why -> Idea -> Motivation -> Picture -> Example -> Formal Theory -> Algorithm -> Failure -> Generalization -> Application`。
-- 图示与可手算的小例子属于正式教学内容。
-- 支线理论、历史、行业故事和跨领域应用可以形成 side-note。
-- 习题不追求数量，只保留真正承担思考、计算、反例、实验或编码任务的高价值题目；必要时开启习题课。
-- 编码习题长期服务于 Mesh Algorithm Library。
-- 每篇 Note 有显式版本号，并采用用户—助手多轮非破坏式迭代。
-- 用户通过 `studentthought` 加入思考；助手通过 `assistantresponse` 回应，并用 `versionaddition` 标记新版本正式新增内容。
+- Botsch et al., **Polygon Mesh Processing** 完整版本；
+- Lutz Kettner (1999), **Using Generic Programming for Designing a Data Structure for Polyhedral Surfaces** 完整 PDF；
+- 可选：固定版本的 Keenan Crane DDG 讲义；
+- 若手头已有：解释 OpenMesh / CGAL / geometry-central 设计思想的论文或课程材料。
 
 ## Infrastructure now available
 
@@ -110,21 +100,22 @@ v0.1 推荐从 M00 开始；M03 Delaunay/Voronoi 将作为早期第一个 grand 
 - `syllabus/MODULE_TEMPLATE.md`：模块模板
 - `notes/README.md`：教学 Note 规范
 - `notes/TEX_CONVENTIONS.md`：Note 的 TeX 批注、回应与版本标记规范
+- `notes/M00/M00-N01-one-mesh-many-meanings.tex`：第一篇正式 Note v0.1
 - `discussions/README.md`：Discussion 规范
 - `refs/README.md`：Reference 规范
 - `refs/BOOKLIST.md`：长期资料地图
 - `refs/LIBRARIES.md`：成熟库学习索引
+- `refs/M00.md`：M00 精确资料计划
 
 ## What remains open
 
-近期需要形成：
+近期保持开放：
 
-- M00 正式 Module 文件；
-- 第一篇正式 Note 的完整 TeX template / preamble 与编译方式；
-- M00 的精确 used/recommended/requested references；
-- M00 首轮成熟库源码阅读计划；
-- Mesh Algorithm Library 的实际仓库/目录组织方式；
-- 首个 Module 的阶段性验收方式。
+- M00-N01 第一轮用户批注将暴露哪些教学偏航；
+- M00-N02 应走 deeper halfedge/incidence 路线，还是先做 comparative library lab；
+- 是否需要把第一篇 Note 的 self-contained preamble 抽成正式公共 TeX template；
+- MeshAudit 是否立即进入独立 Mesh Algorithm Library，还是先以课程练习形式存在；
+- M00 的最终 exit criteria 是否需要独立习题课。
 
 长期保持开放：
 
@@ -139,10 +130,9 @@ v0.1 推荐从 M00 开始；M03 Delaunay/Voronoi 将作为早期第一个 grand 
 - 同时强调工程能力，不能陷入纯推理游戏。
 - 数学上至少关注拓扑、几何、分析三大层面，代数结构融入其中而非孤立教学。
 - 重要算法应能从宏观结构解释其成立范围与失效原因，例如 Delaunay triangulation。
-- 传统 mesh processing 可作为工程参照，但不应成为课程唯一主线。
-- 新技术可以进入课程，但应判断主线/支线地位，而非机械追热点；3D/4DGS、geometric deep learning 只是示例。
+- 新技术可以进入课程，但应判断主线/支线地位，而非机械追热点。
 - 成熟 mesh libraries 是重要学习资料，需要理解设计原理、优势、劣势和适用边界。
-- 每篇 Note 必须明确 refs；长期书单/库索引也应维护在仓库。
+- 每篇 Note 必须明确 refs，并在 Note 内重复需要用户补充的资料。
 - Note 必须让读者先知道“为什么”和“在做什么”，再进入严密细节。
 - 图、worked example、习题、编码与支线内容都是教学体系的一部分，而不是装饰。
 - 用户批注与助手回应要保存在 Note 的版本演化中。
@@ -151,10 +141,10 @@ v0.1 推荐从 M00 开始；M03 Delaunay/Voronoi 将作为早期第一个 grand 
 
 ## Next recommended action
 
-设计 `M00` 正式 Module 文件，同时建立 TeX template 和 M00 精确参考计划。完成这三项后开始 `M00-N01 — One mesh, many meanings: graph, complex, PL surface, data structure`。
+**用户阅读并批注 `M00-N01 v0.1`。**
 
-第一篇 Note 完成并经过用户首轮批注后，立即做一次大纲回看，而不是机械进入 M00-N02。
+在收到这一轮真实学习反馈之前，不预先锁定第二篇 Note。
 
 ## Last update
 
-2026-09-16: v0.1 formal module map, engineering track, reference booklist and mature-library study index established.
+2026-09-16: M00 activated; first formal teaching Note `M00-N01 v0.1` written, M00 reference plan recorded, awaiting first user annotation round.
