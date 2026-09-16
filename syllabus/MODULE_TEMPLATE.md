@@ -1,6 +1,6 @@
 # Module Template
 
-每个正式模块建议使用以下模板。可按需要删改，但应保留“数学结构—算法—失效—工程意义”这一核心链条，并显式考虑教学方式、支线、习题和工程沉淀。
+每个正式模块建议使用以下模板。可按需要删改，但应保留“数学结构—算法—失效—工程意义”这一核心链条，并显式考虑教学方式、成熟库、支线、习题、前沿连接和工程沉淀。
 
 ```markdown
 # Module XX — Title
@@ -60,10 +60,26 @@ Status: planned | active | paused | completed-stage
 
 这些理论与算法在 CAD、图形学、有限元、机器人、视觉、科学计算等场景中意味着什么？
 
+## Library study
+
+哪些成熟库最值得阅读？对每个库希望回答什么设计问题？
+它在本模块中充当 Reference / Oracle / Dependency 中的哪种角色？
+
 ## Perspective / side roads
 
 有哪些值得拓展视野但不应冲垮主线的数学理论、猜想、历史、行业故事或跨领域联系？
 哪些值得发展为 side-note？
+
+## Frontier check
+
+本模块是否与当前快速发展的技术存在真正结构性联系？
+若有，是：
+- 只做 perspective；
+- 建立 side-note；
+- 进入 frontier track；
+- 已成熟到需要升级为主线？
+
+不要为了“新”机械加入热点。
 
 ## Notes planned
 
@@ -77,7 +93,7 @@ Status: planned | active | paused | completed-stage
 ## Experiments / coding exercises
 
 哪些内容需要数值实验或编码？
-哪些实现适合进入长期 Mesh Algorithm Library？
+标明 coding level：hand implementation / reference implementation / library candidate / external integration。
 
 ## Library contribution
 
@@ -90,6 +106,7 @@ Status: planned | active | paused | completed-stage
 ## References
 
 需要哪些教材、论文、实现库或历史资料？
+必须区分 used / recommended / optional / requested。
 
 ## Open questions
 
@@ -107,4 +124,4 @@ Status: planned | active | paused | completed-stage
 - `paused`：主动暂停，需注明原因；
 - `completed-stage`：阶段完成，但允许未来回访和升级。
 
-`completed-stage` 不表示主题永久封闭。Note 迭代、习题课、支线研究或算法库实现都可能使模块重新 active。
+`completed-stage` 不表示主题永久封闭。Note 迭代、习题课、支线研究、frontier 更新或算法库实现都可能使模块重新 active。
